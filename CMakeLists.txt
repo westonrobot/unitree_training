@@ -18,15 +18,14 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
-include_directories(include)
-link_directories(src)
+# include_directories(include)
+# link_directories(src)
 
 set (
   DEPENDENCY_LIST
   unitree_go
   unitree_api
   rclcpp
-  std_msgs
 )
 
 # find dependencies
@@ -36,7 +35,6 @@ find_package(ament_cmake REQUIRED)
 find_package(unitree_go REQUIRED)
 find_package(unitree_api REQUIRED)
 find_package(rclcpp REQUIRED)
-find_package(std_msgs REQUIRED)
 
 if (BUILD_EXAMPLES)
     add_subdirectory(sport_mode_samples)
