@@ -6,7 +6,7 @@
  * @copyright Copyright (c) 2024 Weston Robot Pte. Ltd.
  */
 
-#include "sport_mode_samples/read_sport_mode_state.hpp"
+#include "unitree_sport_mode/read_sport_mode_state.hpp"
 
 #define DISPLAY_FOOT_DATA 1
 

@@ -6,7 +6,7 @@
  * @copyright Copyright (c) 2024 Weston Robot Pte. Ltd.
  */
 
-#include "sport_mode_samples/sport_mode_control.hpp"
+#include "unitree_sport_mode/sport_mode_control.hpp"
 
 SportModeControl::SportModeControl() : Node("SportModeControl") {
   SetupROSInterfaces();
@@ -21,7 +21,18 @@ void SportModeControl::SetupROSInterfaces() {
                 std::placeholders::_1));
 }
 
-void SportModeControl::SportStateCallback(const unitree_go::msg::SportModeState::SharedPtr msg) {
-    mode_ = msg->mode;
+void SportModeControl::SportStateCallback(
+    const unitree_go::msg::SportModeState::SharedPtr msg) {
+  mode_ = msg->mode;
+  // Move code below to a timer callback.
+  if (mode_ == sport_modes::kDamping) {
+    sport_client_handle_.StandUp(req_);
+  } else if (mode_ == sport_modes::kJointLock) {
+    sport_client_handle_.BalanceStand(req_);
+  }
+  sport_mode_ctrl_pub_->publish(req_);
+}
 
+int main() {
+  return 0;
 }

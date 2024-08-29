@@ -15,23 +15,22 @@
 
 #include "unitree_api/msg/request.hpp"
 #include "unitree_go/msg/sport_mode_state.hpp"
-#include "common/ros2_sport_client.h"
+#include "unitree_ros2_client/common/ros2_sport_client.h"
 
 enum sport_modes {
-  idle = 0,
-  balanceStand,
-  pose,
-  locomotion,
-  reserve,
-  lieDown,
-  jointLock,
-  damping,
-  recoveryStand,
-  reserve,
-  sit,
-  frontFlip,
-  frontJump,
-  frontPounc
+  kIdle = 0,
+  kBalanceStand,
+  kPose,
+  kLocomotion,
+  kReserve,
+  kLieDown,
+  kJointLock,
+  kDamping,
+  kRecoveryStand,
+  kSit,
+  kFrontFlip,
+  kFrontJump,
+  kFrontPounce
 };
 
 class SportModeControl : public rclcpp::Node {
