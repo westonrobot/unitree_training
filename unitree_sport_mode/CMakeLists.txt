@@ -48,6 +48,7 @@ target_link_libraries(sport_mode_control unitree_ros2_client::unitree_ros2_clien
 
 install(TARGETS
         read_sport_mode_state
+        sport_mode_control
         ARCHIVE DESTINATION lib
         LIBRARY DESTINATION lib
         RUNTIME DESTINATION lib/${PROJECT_NAME}

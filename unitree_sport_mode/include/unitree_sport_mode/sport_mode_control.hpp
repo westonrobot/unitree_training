@@ -9,6 +9,7 @@
 #ifndef SPORT_MODE_CONTROL_HPP
 #define SPORT_MODE_CONTROL_HPP
 
+#include <chrono>
 #include <memory>
 
 #include "rclcpp/rclcpp.hpp"
@@ -38,14 +39,16 @@ class SportModeControl : public rclcpp::Node {
   SportModeControl();
   void SetupROSInterfaces();
 
-  // Callback
+  // Callbacks
   void SportStateCallback(const unitree_go::msg::SportModeState::SharedPtr msg);
+  void TimerCallback();
 
  private:
   SportClient sport_client_handle_;
   unitree_api::msg::Request req_;
-  
+
   int mode_;
+  bool mode_change_det;
 
   // Publisher
   rclcpp::Publisher<unitree_api::msg::Request>::SharedPtr sport_mode_ctrl_pub_;
@@ -53,6 +56,9 @@ class SportModeControl : public rclcpp::Node {
   // Subscriber
   rclcpp::Subscription<unitree_go::msg::SportModeState>::SharedPtr
       sport_state_sub_;
+
+  // Timer
+  rclcpp::TimerBase::SharedPtr timer_;
 };
 
 #endif /* SPORT_MODE_CONTROL_HPP */

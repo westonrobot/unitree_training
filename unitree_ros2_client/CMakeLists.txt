@@ -33,7 +33,9 @@ find_package(unitree_api REQUIRED)
 add_library(unitree_ros2_client STATIC src/common/ros2_sport_client.cpp src/common/motor_crc.cpp)
 target_include_directories(unitree_ros2_client PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-    $<INSTALL_INTERFACE:include>)
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/unitree_ros2_client>
+    $<INSTALL_INTERFACE:include>
+    $<INSTALL_INTERFACE:include/unitree_ros2_client>)
 ament_target_dependencies(unitree_ros2_client ${DEPENDENCY_LIST})
 
 ament_export_targets(unitree_ros2_client HAS_LIBRARY_TARGET)
