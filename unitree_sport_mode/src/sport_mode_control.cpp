@@ -19,12 +19,18 @@ void SportModeControl::SetupROSInterfaces() {
       "sportmodestate", 10,
       std::bind(&SportModeControl::SportStateCallback, this,
                 std::placeholders::_1));
+  timer_ = this->create_wall_timer(
+      std::chrono::milliseconds(500),
+      std::bind(&SportModeControl::TimerCallback, this));
+  mode_change_det = false;
 }
 
 void SportModeControl::SportStateCallback(
     const unitree_go::msg::SportModeState::SharedPtr msg) {
   mode_ = msg->mode;
-  // Move code below to a timer callback.
+}
+
+void SportModeControl::TimerCallback() {
   if (mode_ == sport_modes::kDamping) {
     sport_client_handle_.StandUp(req_);
   } else if (mode_ == sport_modes::kJointLock) {
@@ -33,6 +39,9 @@ void SportModeControl::SportStateCallback(
   sport_mode_ctrl_pub_->publish(req_);
 }
 
-int main() {
+int main(int argc, char* argv[]) {
+  rclcpp::init(argc, argv);
+  rclcpp::spin(std::make_shared<SportModeControl>());
+  rclcpp::shutdown();
   return 0;
 }
