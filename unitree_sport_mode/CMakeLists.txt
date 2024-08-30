@@ -42,7 +42,6 @@ ament_target_dependencies(read_sport_mode_state ${DEPENDENCY_LIST})
 
 add_executable(sport_mode_control src/sport_mode_control.cpp)
 target_include_directories(sport_mode_control PUBLIC include)
-# target_include_directories(sport_mode_control PUBLIC /home/kartheegeyan/unitree_ros_ws/src/unitree_training/unitree_ros2_client/include)
 ament_target_dependencies(sport_mode_control ${DEPENDENCY_LIST})
 target_link_libraries(sport_mode_control unitree_ros2_client::unitree_ros2_client)
 

@@ -48,7 +48,7 @@ class SportModeControl : public rclcpp::Node {
   unitree_api::msg::Request req_;
 
   int mode_;
-  bool mode_change_det;
+  int control_rate_;
 
   // Publisher
   rclcpp::Publisher<unitree_api::msg::Request>::SharedPtr sport_mode_ctrl_pub_;
