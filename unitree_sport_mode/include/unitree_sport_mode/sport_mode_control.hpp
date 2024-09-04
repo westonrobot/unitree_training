@@ -15,6 +15,7 @@
 #include "rclcpp/rclcpp.hpp"
 
 #include "unitree_api/msg/request.hpp"
+#include "unitree_api/msg/response.hpp"
 #include "unitree_go/msg/sport_mode_state.hpp"
 #include "unitree_ros2_client/common/ros2_sport_client.h"
 
@@ -41,6 +42,7 @@ class SportModeControl : public rclcpp::Node {
   void SetupROSInterfaces();
 
   // Callbacks
+  void SportControlCallback(const unitree_api::msg::Response::SharedPtr msg);
   void SportStateCallback(const unitree_go::msg::SportModeState::SharedPtr msg);
   void TimerCallback();
 
@@ -55,6 +57,8 @@ class SportModeControl : public rclcpp::Node {
   rclcpp::Publisher<unitree_api::msg::Request>::SharedPtr sport_mode_ctrl_pub_;
 
   // Subscriber
+  rclcpp::Subscription<unitree_api::msg::Response>::SharedPtr
+      sport_mode_res_sub_;
   rclcpp::Subscription<unitree_go::msg::SportModeState>::SharedPtr
       sport_state_sub_;
 

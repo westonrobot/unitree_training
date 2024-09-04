@@ -37,22 +37,22 @@ void SportModeStateReader::SportStateCallback(
     }
 
     RCLCPP_INFO(this->get_logger(),
-                "Foot position and velcity relative to body -- num: %d; x: %f; "
+                "Foot position and velocity relative to body -- num: %d; x: %f; "
                 "y: %f; z: %f, vx: %f; vy: %f; vz: %f",
                 0, foot_pos_[0], foot_pos_[1], foot_pos_[2], foot_vel_[0],
                 foot_vel_[1], foot_vel_[2]);
     RCLCPP_INFO(this->get_logger(),
-                "Foot position and velcity relative to body -- num: %d; x: %f; "
+                "Foot position and velocity relative to body -- num: %d; x: %f; "
                 "y: %f; z: %f, vx: %f; vy: %f; vz: %f",
                 1, foot_pos_[3], foot_pos_[4], foot_pos_[5], foot_vel_[3],
                 foot_vel_[4], foot_vel_[5]);
     RCLCPP_INFO(this->get_logger(),
-                "Foot position and velcity relative to body -- num: %d; x: %f; "
+                "Foot position and velocity relative to body -- num: %d; x: %f; "
                 "y: %f; z: %f, vx: %f; vy: %f; vz: %f",
                 2, foot_pos_[6], foot_pos_[7], foot_pos_[8], foot_vel_[6],
                 foot_vel_[7], foot_vel_[8]);
     RCLCPP_INFO(this->get_logger(),
-                "Foot position and velcity relative to body -- num: %d; x: %f; "
+                "Foot position and velocity relative to body -- num: %d; x: %f; "
                 "y: %f; z: %f, vx: %f; vy: %f; vz: %f",
                 3, foot_pos_[9], foot_pos_[10], foot_pos_[11], foot_vel_[9],
                 foot_vel_[10], foot_vel_[11]);

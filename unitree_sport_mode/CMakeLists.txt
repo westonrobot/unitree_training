@@ -45,9 +45,15 @@ target_include_directories(sport_mode_control PUBLIC include)
 ament_target_dependencies(sport_mode_control ${DEPENDENCY_LIST})
 target_link_libraries(sport_mode_control unitree_ros2_client::unitree_ros2_client)
 
+add_executable(trajectory_follow src/trajectory_follow_sample.cpp)
+target_include_directories(trajectory_follow PUBLIC include)
+ament_target_dependencies(trajectory_follow ${DEPENDENCY_LIST})
+target_link_libraries(trajectory_follow unitree_ros2_client::unitree_ros2_client)
+
 install(TARGETS
         read_sport_mode_state
         sport_mode_control
+        trajectory_follow
         ARCHIVE DESTINATION lib
         LIBRARY DESTINATION lib
         RUNTIME DESTINATION lib/${PROJECT_NAME}
